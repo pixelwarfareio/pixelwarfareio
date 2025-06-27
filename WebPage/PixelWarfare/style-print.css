@@ -1,0 +1,63 @@
+/* https://pixelwarfare.org/wp-content/themes/PixelWarfare/style-print.css?ver=5.4.8 */
+/*
+This is     style-print.css
+Any styles here will apply to the printed output of  your webpages
+You can over ride this 	style-print.css 	by using a child theme that includes 		style-print.css 	and adding your own styles to that.
+*/
+
+body{
+background:white none;
+}
+p.read-more-and-comment-link,
+span.meta-info,
+div.top-navigation, 
+div.bottom-navigation, 
+div.left-sidebar,
+div.right-sidebar,
+div.footer,
+div.top-search,
+img.header,
+p.post-links,
+p.post-info-bottom-categories,
+p.post-info-bottom-tags,
+div.avatar,
+div#respond,
+p.comment-reply-link {
+display:none;
+}
+div.post, div.review, div.comment-body{
+padding-top:60px;
+}
+p.post-date {
+background-image:none;
+}
+div#content h1, /*backwards compatibility */
+div#content h2,
+div#content h3, 
+div#content h4, 
+div#content h4, 
+div#content h5, 
+div#content p, 
+div#content li,
+div#content a:link,
+div#content a:visited,
+div#content a:hover,
+div#content a.permalink:link,
+div#content a.permalink:visited,
+div#content a.permalink:hover,
+div.content h1,
+div.content h2,
+div.content h3, 
+div.content h4, 
+div.content h4, 
+div.content h5, 
+div.content p, 
+div.content li,
+div.content a:link,
+div.content a:visited,
+div.content a:hover,
+div.content a.permalink:link,
+div.content a.permalink:visited,
+div.content a.permalink:hover  {
+color:black;
+}

@@ -1,0 +1,2445 @@
+/* https://pixelwarfare.org/wp-content/themes/PixelWarfare/style.css */
+/*
+License: <strong></strong>
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: one-column, two-columns, three-columns, left-sidebar, right-sidebar, fixed-layout, fluid-layout, custom-background, custom-header, custom-menu, featured-images, flexible-header, full-width-template, post-formats, sticky-post, theme-options, threaded-comments, black, blue, brown, gray, green, orange, pink, purple, red, silver, tan, white, yellow, dark, light
+
+
+    The CSS, XHTML and design is released under GPL:
+    http://www.opensource.org/licenses/gpl-license.php
+*/
+
+/*
+Note: styles that are selected  via admin / appearance / childishly simple options page are output by internal-style-sheet.php
+
+Sections in this style.css can be searched for using these flags/words:
+
+=Zero       (set everything to zero)
+=Remove dotted lines  (from links)
+=Structure
+=Font sizes
+=Site title and description, taglines
+=Images     (images in posts)
+=Images WITHOUT captions 
+=Images WITH captions
+=Home Pages
+=Sidebars, footer, home page widgets
+=Home Page bottom widgets
+=Landing Page
+=Responsive images
+=Links
+=Lists      (lists and unordered lists within posts, comments and simple home pages)
+=Comments
+=Comment Form
+=Latest comments
+=Calendar
+=Categories
+=Child categories
+=Widgets
+=Footer
+=Copyright notice
+=RSS feeds
+=Powered by WordPress, theme created by
+=Top search box
+=No Posts Search box    (if there are no posts or search results)
+=Widget search form (search form within a dynamic sidebar)
+=Search results
+=Image.php
+=Attachment.php
+=Login
+=Menus / navigation
+=Post formats
+=404
+=Smiley
+=Woocommerce
+=Other
+*/
+
+
+/* =Zero. Set everything to zero. From the twenty-ten theme
+--------------------------------------------------------------------------------------------------- */
+
+div,
+div.wrapper, /* to make sure padding and borders are outside the wrapper otherwise the layout is affected */
+div.avatar, /* to ensure the avatar is the same size as before */
+img.avatar {
+background:transparent;
+border:0;
+margin:0;
+padding:0;
+vertical-align:baseline;
+box-sizing: content-box;  
+-webkit-box-sizing: content-box;
+-moz-box-sizing: content-box;
+-o-box-sizing: content-box;
+-ms-box-sizing: content-box;
+}
+
+html,body,div.sidebar, applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{
+background:transparent;
+border:0;
+margin:0;
+padding:0;
+vertical-align:baseline;
+box-sizing: border-box; /* so padding and borders are counted inside the max width, not added to it. Keeps images from breaking out of div.sidebar (above) for example*/
+-webkit-box-sizing: border-box;
+-moz-box-sizing: border-box;
+-o-box-sizing: border-box;
+-ms-box-sizing: border-box;
+} /* no position:relative as this causes table borders to disappear and absolute position divs in lightboxes not to work. div.sidebar keeps borders within sidebar else layout breaks */
+ul,
+li {
+position:relative;
+} /*so that menus work */
+table{
+border-collapse:collapse;
+border-spacing:0;
+}
+table,
+tr,
+td,
+th{
+border:1px solid #858585;
+}
+td,
+th{
+padding:4px;
+}
+img{	
+display:block;
+height:auto; /* seems to do good things */
+max-width:100%; /* so don't break containers */
+-moz-border-radius: 7px; /* default rounded corners*/
+-webkit-border-radius: 7px;
+border-radius:7px;
+}
+a img.alignleft,
+a img.alignright,
+p a img.alignleft,
+p a img.alignright{ 
+z-index:1;
+}/*  Floated linked images without this z-index will be covered by neighbouring elements. Although the image will be visible it won't be possible to click on it. */
+
+
+/* =Remove dotted lines
+Remove dotted lines around links and active state inputs for Firefox and IE8 e.g. for buttons at bottom of posts that are sub-divided across multiple pages
+Thanks to  Edward Tanguay and chinkchink at:
+http://stackoverflow.com/questions/71074/how-to-remove-firefoxs-dotted-outline-on-buttons-as-well-as-links/199319#199319 
+--------------------------------------------------------------------------------------------------- */
+
+a:focus{outline:none;}
+input[type="submit"]::-moz-focus-inner, input[type="button"]::-moz-focus-inner{border : 0px;} 
+input[type="submit"]:focus, input[type="button"]:focus{outline : none;}
+
+
+/* =Structure
+--------------------------------------------------------------------------------------------------- */
+
+html{ 
+font-size: 100%; 
+}  /*    
+media queries taken from baseline.
+http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw/
+http://filamentgroup.com/lab/how_we_learned_to_leave_body_font_size_alone/
+http://v1.jontangerine.com/silo/css/pixels-to-ems/
+*/
+
+body{ 
+background:#ffffff;
+border:0;
+color:#000000;
+font-family:Arial,Verdana,Serif,Sans-Serif,"Courier New";
+font-size:100%; /* Just for good luck. Any other setting is arbitrary as users set their own font size. Keep it the same as baseline html for synchronised media queries */
+font-weight:normal;
+margin:0;
+padding-bottom:50px;
+text-align:left;
+/*   word-break: break-all; */
+}
+div.wrapper,
+div#wrapper{	
+background-color:transparent;
+border:1px solid #000000;
+margin:30px auto 0 auto;
+padding:0;
+position:relative;
+width:980px;
+}/* no overflow:auto Not necessary and slows browser rendering time causing scroll bar */
+div.wrapper, 
+img.header{
+-moz-border-radius-topleft: 7px; 
+-moz-border-radius-topright: 7px;
+-webkit-border-top-left-radius: 7px;
+-webkit-border-top-right-radius: 7px;
+border-top-right-radius:7px;
+border-top-left-radius:7px;
+-moz-border-radius-bottomleft: 0px; 
+-moz-border-radius-bottomright: 0px;
+-webkit-border-bottom-left-radius: 0px;
+-webkit-border-bottom-right-radius: 0px;
+border-bottom-right-radius:0px;
+border-bottom-left-radius:0px;
+}
+div.wrapper, 
+div.footer{
+-moz-border-radius-bottomleft: 7px; 
+-moz-border-radius-bottomright: 7px;
+-webkit-border-bottom-left-radius: 7px;
+-webkit-border-bottom-right-radius: 7px;
+border-bottom-right-radius:7px;
+border-bottom-left-radius:7px;
+}
+div.inner-wrapper,
+div#inner-wrapper{ /*backwards compatibility */
+margin:0;
+overflow:auto;
+padding:0;
+position:relative;
+width:100%;
+}
+img.header{	
+background-color:transparent;
+}
+div.header-container{ /* above div#content, div.content on all pages. Essentially a spacer set to the same height as the padding-top in div.sidebar */
+min-height:48px;
+background-color:transparent;
+position:relative;
+}
+div.post,
+div.page,
+div.attachment,
+div.forum{	/* BBpress */
+border:1px solid #ffffff;
+margin:0 1% 30px 1%; 
+overflow:auto;
+padding:0 10px 10px 10px;
+position:relative;
+-moz-border-radius: 7px;
+-webkit-border-radius: 7px;
+border-radius:7px;
+}
+div.sticky{	
+border:3px solid #ffffff;
+position:relative;
+}
+div#content, /*backwards compatibility */
+div.content{
+background:transparent;
+float:left;
+overflow:auto;
+width:790px;
+margin:0;
+padding:0;
+position:relative;
+}
+body.page div.content-page-without-sidebars,
+body.page div.content-page-without-sidebars-or-a-title,
+body.page div.content-page-without-sidebars-or-a-space-at-the-top{
+border:none;
+margin:0;
+padding:0;
+width:100%;
+}
+div.entry{
+margin:0 0 20px 0;
+/* overflow:auto; */
+position:relative;
+width:100%;
+word-wrap: break-word;
+}
+div.entry img{
+-moz-border-radius: 7px;
+-webkit-border-radius: 7px;
+border-radius:7px;
+}
+div.left-sidebar-tag-cloud-item ul li,
+div.right-sidebar-tag-cloud-item ul li,
+div.inner-footer-tag-cloud-item ul li{
+border-bottom:0;
+}
+div.term-list{	
+background:transparent;
+border:1px solid #c0c0c0;
+margin:0 0 40px 0;
+position:relative;
+width:100%;
+}
+
+/* =Font sizes
+--------------------------------------------------------------------------------------------------- */
+
+h1{
+margin: .67em 0
+}
+h2{
+margin: .75em 0
+}
+h3{
+margin: .83em 0
+}
+h4, 
+p{
+margin: 1.12em 0
+}
+h5{
+margin: 1.5em 0
+}
+h6{
+margin: 1.67em 0
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6{
+font-weight:bold;
+text-align:left;
+text-indent:0;
+}
+h1,
+h1.site-title-and-description{
+font-size:1.7em;
+}
+h1.post-title,
+h1.page-title{
+font-size:1.4em;
+}
+h2 {
+font-size:1.55em;
+}
+h2.site-title-and-description{
+font-size:1.2em;
+}
+h3{
+font-size:1.4em;
+}
+h3.comments{
+font-size:1.2em;
+}
+h4{
+font-size:1.3em;
+}
+h5{
+font-size:1.2em;
+}
+h6{
+font-size:1.1em;
+}
+div.entry h1,
+div.entry h2,
+div.entry h3,
+div.entry h4,
+div.entry h5,
+div.entry h6{	
+clear:both;
+}
+h1.multiple-post-heading{
+margin:0 0 0 10px;
+padding:10px 0 0 0;
+}
+h1.post-title,
+h1.page-title,
+h2.post-title{
+margin:6px 0 0 0; /* to align with date stamp */
+}
+h1.error,
+h2.error {
+text-align:center;
+}
+h1.search{	
+font-weight:bold;
+}
+div.wrapper,
+div.wrapper ul,
+div.wrapper ol,
+div.wrapper li,
+div.wrapper li li{
+font-size:14px;
+font-size:0.875rem; /*Change all font sizes except the navigation with this*/
+}
+span.search-term{	
+font-weight:normal;
+}
+p{
+font-style:normal;
+font-weight:normal;
+margin:1em 0;
+padding:0;
+text-align:left;
+text-indent:0;
+}
+p.post-date{	
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/theme-icons.png ) left top no-repeat;
+float:left;
+height:50px;
+margin:10px 20px 0 0;
+position:relative;
+text-align:center;
+width:50px;
+z-index:20;
+}
+span.post-month{
+color:#FFFFFF;
+display:block;
+font-size:14px;
+font-weight:bold;
+line-height:18px;
+}
+span.post-day{
+color:#868686;
+display:block;
+font-size:16px;
+font-weight:bold;
+left:-1px;
+line-height:18px;
+}
+span.post-year{
+color:#616161;
+display:block;
+font-size:10px;
+line-height:10px;
+}
+p.post-info-top{	
+clear:both;
+color:#035176;
+font-size:0.9em;
+margin:0 0 20px 0;
+}
+p.post-info-top span.post-author{
+font-style:normal;
+}
+p.post-info-top span.by{
+font-style:italic;
+}
+p.post-info-top span.meta-info{
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/theme-icons.png ) 0 -275px no-repeat;
+float:right;
+padding:0 0 0 20px;
+}
+p.post-info-top span.number-of-comments{
+font-style:normal;
+margin-left:0;
+margin-right:0;
+padding-left:0;
+padding-right:0;
+}
+p.post-info-excerpt-spacer{
+clear:both;
+font-size:1em;
+font-style:italic;
+margin:0;
+}
+p.post-info-bottom-categories{	
+clear:both;
+font-size:0.8em;
+font-style:italic;
+margin:25px 0 0 0;
+text-indent:0;
+}
+p.post-info-bottom-categories a:link{
+text-decoration:none;
+}
+p.post-info-top-multiple-post-with-dates{
+height:5px;
+margin-bottom:0;
+padding-bottom:0;
+}
+span.categories{
+font-style:italic;
+}
+p.post-info-bottom-tags{
+clear:both;
+font-size:0.8em;
+font-style:italic;
+margin:5px 0 0 0;
+text-indent:0;
+}
+p.post-info-bottom-tags a:link{
+text-decoration:none;
+}
+span.tags{
+font-style:italic;
+}
+p.read-more-and-comment-link{	
+clear:both;
+font-size:0.9em;
+margin:10px 0 0 0;
+padding:0;
+text-indent:0;
+}
+p.comments-and-trackbacks,
+p.trackback-only,
+p.comments-only,
+p.no-comments-no-trackbacks{
+font-size:0.8em;
+font-style:italic;
+margin:10px 0 5px 0;
+padding:0;
+text-indent:0;
+}
+p.comments-and-trackbacks{
+margin:20px 0 15px 0;
+}
+a.comments-closed:link,
+a.comments-closed:visited{
+font-style:normal;
+}
+a.comments-closed:hover{
+font-style:normal;
+}
+code,
+kbd,
+tt{
+background:#e2e2e2;
+}
+del,
+strike,
+s{
+text-decoration:line-through;
+}
+em{
+font-style:italic;
+}
+ins{
+border:1px dotted gray;
+margin:0 8px 0 8px;
+padding:0 3px 0 3px;
+text-decoration:none;
+}
+small, 
+sub, 
+sup{
+font-size: 0.8em ;
+}
+sub{ 
+vertical-align: sub;
+}
+sup{ 
+vertical-align: super;
+}
+abbr{
+border-bottom:1px dotted;
+}
+acronym{
+border-bottom:1px dashed;
+}
+address{
+margin:0.5em 0 0.5em 0;
+}
+dt{
+font-weight:bold;
+margin:0.5em 0 0.2em 0;
+padding:0.3em 0 0 0;
+}
+dd{
+font-weight:normal;
+}
+blockquote p:first-child{	
+background:transparent url(/web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/blockquote-left.gif) 0 top no-repeat;
+margin-left:0;
+padding:35px 20px 0 20px;
+text-indent:0;
+}
+blockquote p{
+margin:20px 0 0 0;
+padding:0 20px 0 20px;
+text-indent:0;
+}
+blockquote{
+background:transparent url(/web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/blockquote-right.gif) right bottom no-repeat;
+margin:35px 5px 35px 5px;
+padding:0 0 35px 0;
+}
+q{
+font-style:italic;
+}
+pre{	
+background:#f2f2f2;
+border-bottom:1px solid #c0c0c0;
+border-left:4px solid #c0c0c0;
+border-right:1px solid #c0c0c0;
+border-top:1px solid #c0c0c0;
+font-size:0.85em;
+margin:20px auto 20px auto;
+padding:6px;
+width:96%;
+word-break: break-all; /* webkit  Marco  http://css-tricks.com/snippets/css/make-pre-text-wrap/  IE8,  */
+word-wrap: break-word;
+white-space: pre;
+white-space: -moz-pre-wrap; /* fennec */
+white-space: pre-wrap;
+white-space: pre\9; /* IE7+ */
+}
+span.bold{
+font-weight:bold;
+}
+var {
+font-style:italic;
+font-weight:bold;
+}
+strong {
+font-weight:bold;
+}
+cite {
+text-decoration:underline;
+font-style:italic;
+border:0;
+}
+
+/* =Site title and description, taglines
+--------------------------------------------------------------------------------------------------- */
+
+div.site-title-and-description-container-without-image,
+div.site-title-and-description-container-without-header{
+background-color:transparent;
+min-height:10em;
+position:relative;
+}
+div.tagline-container{
+background-color:transparent;
+left:0;
+position:absolute;
+top:0;
+}
+a.primary-tagline-link,
+a.secondary-tagline-link{
+margin:0;
+padding:0;
+text-decoration:none;
+}
+h1.site-title,
+h1.primary-tagline-h1{
+color:black;
+margin:11px 0 0 0;
+padding:0 0 0 10px;
+text-align:left;
+}
+h2.site-description,
+h2.secondary-tagline-h2{
+color:black;
+font-size:1.3em;
+margin:10px 0 0 0;
+padding:0 0 0 10px;
+text-align:left;
+}
+h2.site-description-without-image, /* if there's no custom header*/
+h2.site-description-without-header{
+padding-bottom:70px;
+}
+
+/*  =Images (in posts)
+--------------------------------------------------------------------------------------------------- */
+
+img.size-full{
+border:0;
+height:auto;
+margin:0;
+padding:0;
+}
+
+
+/* =Images WITHOUT captions
+See below for Home Page images
+--------------------------------------------------------------------------------------------------- */
+
+img.aligncenter{
+margin:4px auto 4px auto;
+}
+img.alignleft{
+float:left;
+margin:4px 10px 4px 0;
+}
+img.alignright{
+float:right;
+margin:4px 0 4px 10px;
+}
+img.alignnone{
+display:inline-block; 
+margin:4px 10px 4px 0;
+}
+
+
+/* =Images WITH captions - these are the div classes surrounding the images. 
+NOTE: WP defines the size and width of this div within the page and normally adds 10px on to divs that contain a caption. This extra 10px has been removed in functions.php
+See below for Home Page images
+--------------------------------------------------------------------------------------------------- */
+
+div.wp-caption{
+padding:0;
+}
+div.aligncenter{
+margin:10px auto 10px auto;
+padding:0;
+position:relative;
+}
+div.alignleft{
+float:left;
+margin:4px 10px 4px 0;
+padding:0;
+position:relative;
+}
+div.alignright{
+float:right;
+margin:4px 0 4px 10px;
+padding:0;
+position:relative;
+}
+div.alignnone{
+display:inline-block; 
+margin:4px 10px 4px 0;
+}
+div.wp-caption img,
+div.wp-caption a img,
+div.alignleft img,
+div.alignleft a img,
+div.aligncenter img,
+div.alignleft a img,
+div.alignright img,
+div.alignleft a img{	
+border:0;
+margin:0;
+padding:0;
+}
+div.wp-caption a img{	
+border:0px solid #0000ff;
+}
+.wp-caption-text{ /*p and dd*/
+color:#000000;
+padding:0;
+text-align:center;
+text-indent:0;
+}
+p.wp-caption-text{
+font-weight:normal;
+margin:10px 0 10px 0;
+}
+dd.wp-caption-text{
+font-weight:normal;
+margin:10px 0 0 0;
+}
+img.wp-post-image{ /* featured images */
+float:left;
+margin:4px 10px 4px 0;
+}
+img.attachment-thumbnail,
+img.attachment-medium,
+img.attachment-large,
+img.attachment-full {
+padding-left:5px;
+padding-right:5px;
+/*
+padding:6px;
+background-color:#f3f3f3;
+border:1px solid #dddddd;
+*/
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+border-radius:6px;
+}
+
+
+/* =Home Pages
+--------------------------------------------------------------------------------------------------- */
+div.front-page-content-no-sidebars{ /* container in place of div.content on home pages without sidebars. */
+min-height:1px; /* If no content prevents this div from collapsing */
+}
+
+/*
+----------------------------Simple home pages -------------------------------------*/
+div.outer-home-page{ /* applies to simple home pages*/
+position:relative;
+width:100%;
+}
+div.inner-home-page{ /* applies to all simple home pages*/
+overflow:auto;
+position:relative;
+}
+div.outer-home-page-simple-textarea-content{
+float:left;
+overflow:auto; 		/* for floated images */
+position:relative;
+}
+div.inner-home-page-simple-textarea-content{
+border:1px solid gray; /*placeholder border properties*/
+margin-left:25px; /* the horizontal space between the boxes */
+margin-top:25px; /* the vertical space between the boxes */
+overflow:auto;
+padding:5px; /*Images are usually in p elements. Wrap images in divs to minimise top and bottom p padding */
+position:relative;
+}
+div.inner-top-content-edge{ /* the top boxes don't have a top margin*/
+margin-top:0;
+}
+div.inner-left-content-edge  /* allows boxes to go to the left edge of the website or the content area */{
+margin-left:0;
+}
+div.inner-right-content-edge  /* allows boxes to go to the right edge of the website or the content area */{
+margin-right:0;
+}
+div.inner-home-page img{ /*Images are usually in p elements. To minimise top and bottom p padding wrap images in divs */
+margin-top:0;
+padding-top:0;
+-moz-border-radius: 7px; /* default rounded corners*/
+-webkit-border-radius: 7px;
+border-radius:7px;
+}
+
+/*
+----------------------------01 -------------------------------------*/
+div.outer-home-page-simple-01-textarea-01-content{
+position:relative;
+width:100%;
+}
+div.inner-home-page-simple-01-textarea-content{
+position:relative;
+border:1px solid gray;
+margin:0;
+border-radius:0;
+box-shadow: none;
+-moz-border-radius: 0;
+-moz-box-shadow: none;
+-webkit-border-radius: 0;
+-webkit-box-shadow: none;
+}
+
+/*
+----------------------------02 -------------------------------------*/
+div.inner-home-page-simple-02{ /*the main inner container within the main outer-home-page-simple-02 */
+margin:-5px 0 0 0;  /* top negative compensates for margins */
+}
+div.home-page-simple-02-top-right{
+float:left;
+overflow:auto;
+width:50%;
+}
+div.outer-home-page-simple-02-textarea-01-content{
+width:50%;
+}
+div.outer-home-page-simple-02-textarea-02-content,
+div.outer-home-page-simple-02-textarea-03-content {
+width:50%; /*of half a page*/
+}
+div.outer-home-page-simple-02-textarea-04-content,
+div.outer-home-page-simple-02-textarea-05-content{
+width:25%; /*of the whole page*/
+}
+
+
+/* =Sidebars, footer, home-page widgets
+--------------------------------------------------------------------------------------------------- */
+
+div.sidebar{	/* The top padding is set to be the same height as div.header-container */
+background:transparent;
+border:0;
+margin:0;
+overflow:auto;
+padding:48px 0 0 0;
+position:relative;
+}
+div.left-sidebar,
+div.right-sidebar{
+background-color:#d2d2d2;
+float:left;
+margin-left:0;
+margin-right:0;
+padding-left:0;
+padding-right:0;
+position:relative;
+width:190px;
+}
+div.long-left-sidebar-background, /* anchor the long sidebar backgrounds to the left and right of their containers */
+div.long-right-sidebar-background {
+background-color:#d2d2d2; 
+bottom:0;
+position:absolute;
+top:0;
+width:190px;
+}
+div.long-right-sidebar-background{
+right:0;
+}
+div.outer-footer-item,
+div.outer-home-page-widget{	
+float:left;
+width:33.2%; /*placeholder if major errors */
+margin:0 0 20px 0; /* bottom margin identical to div.left-sidebar-item, div.right-sidebar-item */
+position:relative;
+}
+div.left-sidebar-item,
+div.right-sidebar-item,
+div.inner-footer-item{
+border:1px #ebebeb solid;
+padding:0 0 10px 0;
+position:relative;
+word-wrap: break-word;
+}
+div.left-sidebar-item, /* width 90% above, margin auto here */
+div.right-sidebar-item{
+margin:0 auto 20px auto;
+width:90%;
+}
+div.inner-footer-item{
+margin:0 0 0 25px; /* same as inner-footer-widget-container margin and padding */
+margin-right:0;
+min-height:250px; /* placeholder if major errors. also ensures inner div stretches to maximum width */
+}
+div.inner-footer-widget-container{ /* This allows the footer items to go to the edge of the page */
+margin-left: -25px;
+margin-right:0;
+overflow:auto;
+padding-left:25px;
+padding-right:25px;
+}
+div.left-sidebar-item, 
+h2.left-sidebar-item,  
+div.right-sidebar-item, 
+h2.right-sidebar-item, 
+div.inner-footer-item, 
+h2.footer-item, 
+div.inner-home-page-widget, 
+div.left-sidebar-item h2.widgettitle:first-child, 
+div.right-sidebar-item h2.widgettitle:first-child, 
+div.inner-footer-item h2.widgettitle:first-child,
+div.inner-home-page-widget h2.widgettitle:first-child{
+-moz-border-radius-topleft: 7px; 
+-moz-border-radius-topright: 7px;
+-webkit-border-top-left-radius: 7px;
+-webkit-border-top-right-radius: 7px;
+border-top-right-radius:7px;
+border-top-left-radius:7px;
+}
+div.left-sidebar-item,
+div.right-sidebar-item, 
+div.inner-footer-item,
+div.inner-home-page-widget {
+-moz-border-radius-bottomleft: 7px; 
+-moz-border-radius-bottomright: 7px;
+-webkit-border-bottom-left-radius: 7px;
+-webkit-border-bottom-right-radius: 7px;
+border-bottom-right-radius:7px;
+border-bottom-left-radius:7px;
+}
+div.inner-footer-item ul, /*inner div can't have padding or will show a gap round the heading*/
+div.inner-home-page-widget ul,
+div.left-sidebar-item ul, 
+div.right-sidebar-item ul,
+div.inner-footer-item ol,
+div.inner-home-page-widget ol,
+div.left-sidebar-item ol,
+div.right-sidebar-item ol,
+div.inner-footer-item form,
+div.inner-home-page-widget form,
+div.left-sidebar-item form,
+div.right-sidebar-item form{	
+padding:0 5px 10px 5px;
+}
+div.left-sidebar-item li,
+div.right-sidebar-item li,
+div.inner-footer-item li,
+div.inner-home-page-widget li{
+border-bottom:1px solid #d2d2d2;
+list-style:none;
+margin:6px 0 0 0;
+padding-bottom:2px;
+padding-top:0;
+text-align:left;
+text-indent:0;
+}
+h2.left-sidebar-item,
+h2.right-sidebar-item,
+h2.widgettitle,
+h2.footer-item,
+h2.home-page-widget{
+font-size:1.2em;
+font-weight:bold;
+margin:0 0 5px 0;
+padding:3px 5px 1px 5px;
+text-align:left;
+}
+div.left-sidebar-widget > div,
+div.right-sidebar-widget > div{
+padding:5px;
+} 
+
+
+/* =Home Page bottom widgets
+--------------------------------------------------------------------------------------------------- */
+
+div.home-page-widgets-container, /* no minimum height so can collapse if no widgets*/
+div.home-page-custom-post-with-widgets-widgets-container{ /*deprecated selector*/
+clear:both; /* vital */
+overflow:auto;
+position:relative;
+}
+div.home-page-widgets-container{ /* move the container left by the apparent width between widgets ( div.inner-home-page-widget ) to get the widgets to the content edge */
+margin-left: -25px;
+margin-right:0;
+}
+div.inner-home-page-widget{
+border:1px solid #ebebeb;
+margin:0 0 0 25px; /* identical to the width between widgets */
+min-height:250px; /* placeholder if major errors. also ensures inner div stretches to maximum width */
+padding:0 0 10px 0;
+position:relative;
+word-wrap: break-word;
+}
+div.outer-home-page-widget-custom-post{ /*deprecated  */
+background-color:transparent;
+float:left;
+margin:0 0 25px 0; 
+width:33.2%; /* placeholder if major errors */
+}
+div.home-page-custom-post-content{ /*deprecated */
+padding:0 1% 10px 1%;
+overflow:auto;
+}
+p.home-page-custom-post-error{ /*deprecated*/
+font-size:1.8em;
+margin:40px 0.5% 40px 0.5%;
+padding-left:0;
+padding-right:0;
+}
+div.home-page-custom-post-preview p{ /*deprecated*/
+padding:10px;
+}
+
+/* =Landing Page
+--------------------------------------------------------------------------------------------------- */
+
+body.body-landing-page{
+background-color:#efefef;
+}
+div.wrapper-landing-page{
+background-color:white;
+border:1px solid #e5e5e5;
+border-radius:6px;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+margin:20px auto 20px auto;
+padding:0;
+position:relative;
+width:900px;
+}
+div.wrapper-landing-page img{
+margin:0;
+padding:0;
+width:auto;
+border-radius:6px;
+-moz-border-radius: 6px;
+-webkit-border-radius: 6px;
+}
+
+/* =Responsive images
+--------------------------------------------------------------------------------------------------- */
+
+@media \0screen{
+    img{ width:auto }
+}
+/* 
+IE8 distorts image height https://github.com/ryanve/fit/blob/master/fit.css 
+http://blog.keithclark.co.uk/wp-content/uploads/2012/11/ie-media-block-tests.php
+https://gist.github.com/necolas/983116
+*/
+
+
+/* Make sure videos and embeds fit their containers see also   https://github.com/ryanve/fit/blob/master/fit.css */
+embed,
+iframe,
+object,
+video,
+.wp-caption{	/* Keep wide captions from overflowing their container. */
+max-width: 100%;
+}
+
+
+/* =Links (but not drop-down navigation links)
+--------------------------------------------------------------------------------------------------- */
+
+a:link,
+a:visited,
+a:hover{
+text-decoration:none;
+}
+a.permalink:link,
+a.permalink:visited{	
+color:#828282;
+text-decoration:none;
+}
+a.permalink:hover{
+color:#b1b1b1;
+text-decoration:none;
+}
+a.date-permalink:link,
+a.date-permalink:visited,
+a.date-permalink:hover{	
+border:0;
+margin:0;
+padding:0;
+}
+span.more{	
+font-style:italic;
+}
+div.entry a.more-link:link,
+div.entry a.more-link:visited{
+font-weight:normal;
+text-decoration:none;
+}
+div.entry a.more-link:hover{
+text-decoration:none;
+}
+span.more-excerpt{	
+font-style:italic;
+}
+a.more-excerpt-link:link,
+a.more-excerpt-link:visited{
+font-weight:normal;
+text-decoration:none;
+}
+a.more-excerpt-link:hover{
+color:#808080;
+font-weight:normal;
+text-decoration:none;
+}
+p.post-info-top a.comment-link:link,
+p.post-info-top a.comment-link:visited,
+p.post-info-top a.comment-link:hover{	
+font-style:normal;
+margin:10px 0 0 0;
+padding:0;
+text-decoration:none;
+}
+span.comment-link{
+color:#13879b;
+margin:0;
+padding:0;
+}
+p.read-more-and-comment-link a.comment-link:link,
+p.read-more-and-comment-link a.comment-link:visited{
+margin:10px 0 0 0;
+padding:0;
+text-decoration:none;
+}
+p.read-more-and-comment-link a.comment-link:hover{
+margin:10px 0 0 0;
+padding:0;
+text-decoration:none;
+}
+p.edit-post{
+clear:both;
+font-size:1em;
+margin:10px 0 0 20px;
+padding:0 0 20px 0;
+}
+p.edit-post a.post-edit-link:link,
+p.edit-post a.post-edit-link:visited{
+color:#FF0000;
+text-decoration:none;
+}
+p.edit-post a.post-edit-link:hover{
+color:#FF0000;
+text-decoration:none;
+}
+div.multiple-post-navigation{	
+background:transparent;
+clear:both;
+color:#000000;
+font-size:0.9em;
+font-style:normal;
+font-weight:normal;
+height:1.5em;
+margin:10px 10px 40px 10px;
+position:relative;
+}
+div.multiple-post-navigation a{
+padding:0 5px 0 5px;
+text-decoration:none;
+}
+span.multiple-nav-left{
+float:left;
+}
+span.multiple-nav-right{
+float:right;
+}
+div.single-post-navigation{	
+background:transparent;
+margin:10px 10px 20px 5px;
+overflow:auto;
+position:relative;
+}
+p.single-left,
+p.single-right{
+font-size:0.9em;
+font-weight:bold;
+}
+p.single-left{
+float:left;
+}
+p.single-right{
+float:right;
+}
+p.single-left a{
+color:#535353;
+padding:0 5px 0 5px;
+text-decoration:none;
+}
+div.post-links, 
+div.page-links{	
+margin:40px 0 30px 0;
+position:relative;
+}
+p.post-links, 
+p.page-links{
+border:none;
+font-size:1em;
+line-height:50px;
+line-height:3em;
+padding:0;
+text-indent:0;
+text-align:center;
+}
+span.page-links, 
+span.post-links{
+background-color:#ebebeb;
+border: 2px solid #4b4b4b;
+color:#000000;
+margin:0 12px 0 12px;
+padding:5px;
+}
+p.page-links  a:link span.page-links,
+p.page-links  a:visited span.page-links,
+p.post-links  a:link span.post-links,
+p.post-links  a:visited span.post-links{
+background-color:#ebebeb;
+border:2px solid #a0a0a0;
+color:#000000;
+padding:5px;
+text-decoration:none;
+}
+p.page-links a:hover span.page-links,
+p.post-links  a:hover span.post-links{
+background-color:#ffffff;
+border:2px solid #000000;
+color:#000000;
+text-decoration:none;
+}
+div.entry p.post-links a:link, 
+div.entry p.post-links a:visited,
+div.entry p.page-links a:link,
+div.entry p.page-links a:visited {	
+text-decoration:none;
+}	
+p.comments-and-trackbacks a:link{	
+padding-bottom:0;
+text-decoration:underline;
+}
+p.comments-and-trackbacks a:visited,
+p.comments-and-trackbacks a:hover{
+padding-bottom:0;
+text-decoration:none;
+}
+
+
+
+/* =Lists and unordered lists (within posts, comments and simple home pages)
+---------------------------------------------------------------------------------------------------*/
+
+div.entry ul,
+div.comment-body ul,
+div.inner-home-page-simple-textarea-content ul{
+margin:0 0 0 40px;
+padding:0;
+}
+div.entry ul li,
+div.comment-body ul li,
+div.inner-home-page-simple-textarea-content ul li{
+list-style:disc;
+margin:10px 0 10px 0;
+padding:0;
+text-indent:0;
+}
+div.entry ol,
+div.comment-body ol,
+div.inner-home-page-simple-textarea-content ol{
+margin:0 0 0 40px;
+padding:0;
+}
+div.entry ol li,
+div.comment-body ol li,
+div.inner-home-page-simple-textarea-content ol li{
+list-style:decimal;
+margin:10px 0 10px 0;
+padding:0;
+text-indent:0;
+}
+
+
+/* =Comments (found in functions.php, the actual comments as opposed to the comment input form found in comments.php) 
+---------------------------------------------------------------------------------------------------*/
+
+h3#comments{
+margin:0 0 0 55px; /*same as div.commentlist. Really wide comments look daft. Also alter div#respond as well  */
+max-width:705px;
+}
+div.commentlist,	
+div.pinglist{	
+margin:0 0 0 55px;
+max-width:705px;
+}
+div.comment{
+padding:0;
+position:relative;
+}
+div.comment-body{
+background:#FFFFFF;
+border:1px solid #707070;
+margin:20px 20px 20px 0;
+padding:5px 10px 5px 10px;
+-moz-border-radius: 7px;
+-webkit-border-radius: 7px;
+border-radius:7px;
+position:relative;
+}
+div.comment-body p{	
+margin:0;
+}
+div.comment-body a:hover{
+text-decoration:none;
+}
+div.ping-text p{	
+margin:10px 0 10px 0;
+word-wrap: break-word;
+}
+div.depth-1{	
+margin:0 10px 20px 0;
+}
+div.depth-1,
+div.depth-2,
+div.depth-3,
+div.depth-4,
+div.depth-5{
+background:transparent;
+margin:20px 0 0 20px;
+padding:0;
+}
+img.avatar{
+background:#fff;
+padding:3px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+-webkit-box-shadow: 0 1px 2px #bbb;
+-moz-box-shadow: 0 1px 2px #bbb;
+box-shadow: 0 1px 2px #bbb;
+}
+div.comment-body div.avatar{	
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/comment-avatar-arrows.png ) right 0 no-repeat;
+padding:0 12px 0 0;
+position:absolute;
+top:15px;
+left:-50px;
+}
+div.bypostauthor > div.comment-body{	
+background:#FFFFFF;
+border:2px solid #000000;
+margin:20px 0 20px 0;
+padding:5px 10px 5px 10px;
+}
+div.bypostauthor > div.comment-body > div.avatar{ 
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/comment-avatar-arrows.png ) right -41px no-repeat;
+padding:0 12px 0 0;
+position:absolute;
+top:15px;
+left:-50px;
+}
+p.comment-meta{
+font-size:0.8em;
+}
+p.comment-meta span.pre-comment-author{	
+color:#808080;
+font-style:italic;
+}
+p.comment-meta a.url:link,
+p.comment-meta a.url:visited{	
+color:#000000;
+text-decoration:underline;
+}
+p.comment-meta a.url:hover{
+color:#5c5c5c;
+text-decoration:none;
+}
+p.comment-meta span.comment-date{
+color:#808080;
+font-style:normal;
+margin:0;
+padding:0 0 0 60px;
+}
+p.comment-meta span.comment-date a:link,
+p.comment-meta span.comment-date a:visited{
+color:#808080;
+text-decoration:none;
+}
+p.comment-meta span.comment-date a:hover{
+color:#FF0000;
+text-decoration:none;
+}
+p.moderation{	
+color:red;
+}
+p.comment-meta span.comment-edit{
+margin:0 0 0 10px;
+}
+span.comment-edit a.comment-edit-link:link,
+span.comment-edit a.comment-edit-link:visited{
+color:#ff0000;
+text-decoration:none;
+}
+span.comment-edit a.comment-edit-link:hover{
+color:#ff6262;
+text-decoration:none;
+}
+h3#reply-title{
+font-style:normal;
+font-weight:bold;
+margin:0 0 20px 1%;
+}
+a#cancel-comment-reply-link{
+font-size:0.8em;
+margin:0;
+padding:0;
+padding:0;
+}
+a#cancel-comment-reply-link:link,
+a#cancel-comment-reply-link:visited{
+text-decoration:underline;
+}
+a#cancel-comment-reply-link:hover{
+text-decoration:none;
+}
+p.must-be-logged-in {	/*  If users need to be logged in to leave a comment */
+font-size:1.1em;
+margin-left:1%;
+margin-bottom:20px;
+}
+p.must-be-logged-in a:link,
+p.must-be-logged-in a:visited {
+text-decoration:underline;
+}
+p.must-be-logged-in a:hover {
+text-decoration:none;
+}
+p.logged-in-as{		/* If you're already logged in */
+font-size:1.1em;
+margin:0;
+padding:0;
+}
+a.logged-in-as:link,
+a.log-out:link{
+text-decoration:underline;
+}
+a.logged-in-as:hover,
+a.log-out:hover{
+text-decoration:none;
+}
+span.log-out{
+float:right;
+}
+p.comment-reply-link{	
+font-weight:normal;
+text-align:left;
+text-indent:0;
+}
+a.comment-reply-link,
+a.comment-reply-login{
+border:1px solid #9f9f9f;
+display:block; /* so can set height*/
+font-size:0.8em;
+margin:1em 0 0 0;
+padding:0.1em 0em 0.1em 0.3em;
+text-indent:0;
+vertical-align:middle;
+width:10em;
+-webkit-border-radius: 20px;
+-moz-border-radius: 20px;
+border-radius: 20px;
+}
+a.comment-reply-link:link,
+a.comment-reply-link:visited,
+a.comment-reply-login:link,
+a.comment-reply-login:visited{
+background-color:#ffffff;
+color:#6A6A6A;
+text-decoration:none;
+}
+a.comment-reply-link:hover,
+a.comment-reply-login:hover{
+background-color:#e6e6e6;
+color:#000000;
+text-decoration:none;
+}
+h3.pings{
+margin:20px 0 20px 0;
+}
+div.comment-navigation{	
+background:transparent;
+border:0;
+margin:30px 0 30px 0;
+overflow:auto;	
+padding:10px 0 10px 0;
+}
+p.comment-navigation{
+border:none;
+font-size:1em;
+margin:0;
+padding:0;
+text-indent:0;
+text-align:center;
+}
+a.page-numbers:link,
+a.page-numbers:visited{	/*	Comment page numbers	*/
+background-color:#ebebeb;
+border:1px solid #a0a0a0;
+color:#000000;
+margin:0 12px 0  12px;
+padding:5px;
+text-decoration:none;
+}
+a.page-numbers:hover{
+background-color:#ffffff;
+border:1px solid #4b4b4b;
+color:#000000;
+margin:0 12px 0  12px;
+text-decoration:none;
+}
+a.page-numbers:link, 
+a.page-numbers:visited, 
+a.page-numbers:hover,
+span.current{
+-moz-border-radius: 3px;
+border-radius: 3px;
+-webkit-box-shadow: 0 1px 2px #bbb;
+-moz-box-shadow: 0 1px 2px #bbb;
+box-shadow: 0 1px 2px #bbb;
+}
+span.current{
+background-color:#ebebeb;
+border: 2px solid #4b4b4b;
+color:#000000;
+margin:0 12px 0  12px;
+padding:5px;
+}
+div.comments-and-trackbacks{	
+margin:0 0 0 27px;
+position:relative;
+}
+
+
+/*  =Comment Form
+--------------------------------------------------------------------------------------------------- */
+
+
+div#respond{	
+background:transparent;
+overflow:auto;
+max-width:745px; /*In order to visibly align with commentlist on wide site */
+}
+div.comment-form{
+margin:0 10px 0 10px;
+position:relative;
+}
+form#form-comment-form{	
+background:transparent;
+padding:5px 1% 40px 1%;
+text-align:left;
+width:98%;
+}
+p.label-and-input{
+height:auto;
+margin:10px 0 10px 0;
+max-width:370px;
+overflow:auto;
+}
+label#label-email,
+label#label-author,
+label#label-url{	
+background:transparent;
+border:none;
+color:#000000;
+font-size:12px;
+margin-right:10px;
+padding:0 0 0 20px;
+width:170px;
+}
+label.required{
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/theme-icons.png ) 0 -415px no-repeat;
+}
+input#input-author,	
+input#input-email,	
+input#input-url{
+background:white;
+border:1px #c0c0c0 solid;
+float:right;
+font-size:12px;
+}
+p.allowed-tags{	
+clear:both;
+color:#000000;
+font-size:0.9em;
+margin:0;
+padding:20px 0 5px 0;
+text-align:left;
+text-indent:0;
+}
+textarea#comment{	
+background:#ffffff;
+border:1px solid #2e2e2e;
+display:block;
+margin:0;
+width:100%;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius:3px;
+}
+input#comment-submit{	
+background:#ffffff;
+border:2px solid #696969;
+cursor:pointer;
+display:block;
+margin:20px 0 0 0;
+padding:5px 0 5px 0;
+width:150px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius:3px;
+}
+input#comment-submit:hover[type="submit"]{
+background:#ffffff;
+border:2px solid #000000;
+}
+p.password-protected-comments{	
+margin:0 0 0 20px;
+}
+
+/*  =Latest comments (sidebar, footer)
+--------------------------------------------------------------------------------------------------- */
+
+div.left-sidebar-latest-comments-item,
+div.right-sidebar-latest-comments-item,
+div.footer-latest-comments-item{
+overflow:auto;
+position:relative;
+}
+div.left-sidebar-latest-comments-item img.avatar,
+div.right-sidebar-latest-comments-item img.avatar,
+div.footer-latest-comments-item img.avatar{	
+float:left;
+height:20px;
+width:20px;
+}
+span.left-sidebar-latest-comments-author,
+span.right-sidebar-latest-comments-author,
+span.footer-latest-comments-author{
+font-size:0.8em;
+font-style:italic;
+margin:0 0 0 10px;
+}
+span.left-sidebar-latest-comments-author a.url:link,
+span.left-sidebar-latest-comments-author a.url:visited,
+span.left-sidebar-latest-comments-author a.url:hover,
+span.right-sidebar-latest-comments-author a.url:link,
+span.right-sidebar-latest-comments-author a.url:visited,
+span.right-sidebar-latest-comments-author a.url:hover,
+a.footer-latest-comments-more:link,
+a.footer-latest-comments-more:visited,
+a.footer-latest-comments-more:hover{
+text-decoration:none;
+}
+span.left-sidebar-latest-comments-date,
+span.right-sidebar-latest-comments-date,
+span.footer-latest-comments-date{
+font-size:0.8em;
+font-style:italic;
+margin:0 0 0 3px;
+}
+p.latest-comments-excerpt,
+p.footer-latest-comments-excerpt{
+clear:both;
+margin:15px 0 20px 0;
+}
+a.sidebar-latest-comments-more:link,
+a.sidebar-latest-comments-more:visited,
+a.sidebar-latest-comments-more:hover,
+div.inner-footer-item a.footer-latest-comments-more:link,
+div.inner-footer-item a.footer-latest-comments-more:visited,
+div.inner-footer-item a.footer-latest-comments-more:hover{
+font-size:0.8em;
+font-style:italic;
+margin:0 0 0 5px;
+}
+
+
+/*  =Calendar
+--------------------------------------------------------------------------------------------------- */
+
+div#calendar_wrap table#wp-calendar,
+table#wp-calendar{
+font-size:0.9em;
+margin-left:5px;
+margin-right:5px;
+table-layout:fixed;
+}
+table#wp-calendar td,
+table#wp-calendar th{ 
+padding:2px;
+width:1%; /* no idea why this works but it does for small and large fonts */
+}
+
+
+/*  =Categories
+--------------------------------------------------------------------------------------------------- */
+
+div.left-sidebar-item ul.left-sidebar-all-categories, /*remove these if want gap between last child category and next parent category*/
+div.right-sidebar-item ul.right-sidebar-all-categories,
+div.inner-footer-item ul.footer-all-categories{
+padding:0 5px 0 5px;
+}
+div.left-sidebar-item ul.children,
+div.right-sidebar-item ul.children,
+div.inner-footer-item ul.children{ /* child Pages */
+margin-bottom:0;
+margin-top:6px;
+padding-bottom:0;
+}
+div.left-sidebar-item ul.children li,
+div.right-sidebar-item ul.children li,
+div.inner-footer-item ul.children li,
+ul#recentcomments li.recentcomments,
+ul.right-sidebar-register li,
+ul.left-sidebar-register li,
+ul.footer-register li{ /* recent comments widget */
+border-bottom: 0;
+}
+ul.children li.page_item,
+ul.children li.cat-item{	
+margin-bottom:0;
+margin-top:6px;
+padding-bottom:0;
+border-bottom:0;
+}
+
+
+/*  =Widgets
+--------------------------------------------------------------------------------------------------- */
+
+div.sidebar-item select,
+div.inner-footer-item select{
+margin:0;
+padding:0;
+max-width:80%;
+}
+li.explanation{	
+text-indent:0;
+}
+div.tagcloud{
+padding:0 10px 10px 5px;
+}
+div.textwidget{
+padding:0 10px 10px 5px;
+}
+div.left-sidebar-item > p,
+div.right-sidebar-item > p{
+padding:0 10px 0 10px;
+}
+div.left-sidebar-item > select,
+div.right-sidebar-item > select{
+margin:0 10px 0 10px;
+}
+
+/*  =Footer
+--------------------------------------------------------------------------------------------------- */
+
+div.footer{
+clear:both;
+position:relative;
+z-index:0;
+}
+div.inner-footer{ 
+margin:0;
+padding:0;
+overflow:auto;
+position:relative;
+}
+div.footer-spacer{	
+background:transparent;
+border:0;
+clear:both;
+height:10px;
+margin:0;
+padding:0;
+position:relative;
+z-index:30;
+}
+div.footer-text-content{
+clear:both;
+}
+
+
+/*  =Copyright notice (footer)
+--------------------------------------------------------------------------------------------------- */
+
+p.copyright{
+clear:both;
+font-size:0.8em;
+font-weight:normal;
+margin-bottom:7px;
+text-align:center;
+text-indent:0;
+left:0;
+}
+
+
+/* =RSS feeds (footer)
+--------------------------------------------------------------------------------------------------- */
+
+div#rss-feeds,
+div.rss-feeds{	
+background:transparent;
+clear:both;
+left:0;
+margin:0 0 5px 0;
+position:relative;
+text-align:left;
+width:100%;
+}
+a.rss{
+font-size:0.8em;
+padding:0.1em 0.1em 0 1em;
+vertical-align:text-bottom;
+}
+span.rss {
+vertical-align:text-bottom;
+}
+span.image-rss{
+border:2px solid #000040;
+background-color:#ffffff;
+-webkit-border-radius: 20px 99px 20px 20px;
+-moz-border-radius: 20px 99px 20px 20px;
+border-radius: 20px 99px 20px 20px;
+}
+
+/*IE 6,7,8 don't understand rounded corners, show background image  http://blog.keithclark.co.uk/wp-content/uploads/2012/11/ie-media-block-tests.php */
+@media \0screen\,screen\9{ 
+
+span.image-rss {
+border:none;
+padding:10px 10px 0 10px;
+}
+span.image-rss-all-posts {
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/rss.png ) 9px 0 no-repeat;
+}
+span.image-rss-all-comments {
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/rss.png ) 9px -60px no-repeat;
+}
+span.inner-comments-single-post {
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/rss.png ) 9px -120px no-repeat;
+}
+}
+
+
+
+/* =Powered by WordPress. By default appears only on index.php and can be found in footer.php
+--------------------------------------------------------------------------------------------------- */
+span.powered-by{
+font-size:0.8em;
+float:right;
+margin-right:10px;
+}
+span.designed-by, /*deprecated*/
+span.theme-created-by{
+font-size:0.8em;
+margin-left:13px;
+margin-right:10px;
+}
+
+
+/* =Top search box
+--------------------------------------------------------------------------------------------------- */
+
+div.top-search{
+background:transparent;
+height:40px;
+padding:0;
+width:240px;
+position:absolute;
+top:10px;
+right:3px;
+z-index:300;
+}
+div.top-search form.top-search-form{
+border:0;
+height:38px;
+margin:0;
+padding:0;
+}
+fieldset.top-search{
+background:none;
+border:0;
+height:30px;
+}
+div.top-search input#top-search-input:hover,
+div.top-search input#top-search-input:focus,
+div.top-search input#top-search-input{
+background:white none;
+border:1px solid black;
+font-size:12px;
+font-weight:normal;
+height:17px;
+left:7px;
+margin:0;
+padding:0 10px 0 10px;
+position:absolute;
+top:6px;
+width:100px;
+border-radius:5px;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+left:50px;
+}
+div.top-search input#top-search-input{
+color:#000000;
+}
+div.top-search input#top-search-input:hover{
+color:#000000;
+}
+div.top-search input#top-search-input:focus{
+color:#000000;
+}
+div.top-search input{
+border:0;
+height:20px;
+left:185px;
+margin:0;
+padding:0;
+position:absolute;
+top:5px;
+width:45px;
+}
+div.top-search input#top-search-submit{
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -785px 2px no-repeat;
+cursor:pointer;
+}
+div.top-search input#top-search-submit:hover{
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -872px 2px no-repeat;
+}
+div.top-search input#top-search-submit:active{	
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -949px 2px no-repeat;
+}
+body.ie div.top-search input#top-search-input, /* internet explorer */
+body.ie div.top-search input#top-search-input:hover, 
+body.ie div.top-search input#top-search-input:focus, 
+body.ie div.top-search input#top-search-input:active{
+padding:1px 10px 0 10px;
+}
+body.ie div.no-posts input#no-posts-input, 
+body.ie div.no-posts input#no-posts-input:hover, 
+body.ie div.no-posts input#no-posts-input:focus, 
+body.ie div.no-posts input#no-posts-input:active{
+padding:1px 10px 0 10px;
+}
+
+
+/* =No Posts Search box (if there are no posts or search results)
+---------------------------------------------------------------------------------------------------*/
+
+h2.no-posts{
+font-weight:normal;
+text-align:left;
+margin:0 0 0 10px;
+}
+p.no-posts{
+margin:20px 0 10px 10px;
+text-align:left;
+}
+div.no-posts form.no-posts{
+border:0;
+height:38px;
+margin:0;
+padding:0;
+width:258px;
+}
+fieldset.no-posts{
+background:none;
+border:0;
+height:30px;
+}
+div.no-posts input#no-posts-input{
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -343px 0 no-repeat;
+border:0;
+color:#C0C0C0;
+font-weight:bold;
+font-size:12px;
+height:17px;
+left:7px;
+margin:0;
+padding:0 10px 0 10px;
+position:absolute;
+top:6px;
+width:158px;
+}
+div.no-posts input#no-posts-input:hover{
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -552px 0 no-repeat;
+color:#000000;
+}
+div.no-posts input#no-posts-input:focus{	
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -552px 0 no-repeat;
+color:#000000;
+}
+
+div.no-posts input#no-posts-submit{
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -785px 2px no-repeat;
+border:0;
+height:20px;
+left:185px;
+margin:0;
+padding:0;
+position:absolute;
+top:4px;
+width:45px;
+}
+div.no-posts input#no-posts-submit:hover{
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -872px 2px no-repeat;
+}
+div.no-posts input#no-posts-submit:active{	
+background:transparent url( /web/20220718102917im_/https://pixelwarfare.org/wp-content/themes/PixelWarfare/images/search.png ) -949px 2px no-repeat;
+}
+
+/*  =Widget search form (search form in a widget)
+--------------------------------------------------------------------------------------------------- */
+
+input.widget-search-input{	
+margin:0 0 10px 10px;
+width:40%;
+}
+input.widget-search-submit{
+margin:0 0 0 10px;
+max-width:80%;
+}
+form.widget-search, fieldset.widget-search{
+border:none;
+}
+form.widget-search input.widget-search-input { /*  Thanks to  http://www.electrictoolbox.com/css3-rounded-corner-input/ */
+border:1px solid #515151;
+margin-bottom:3px;
+margin-top:10px;
+-moz-border-radius: 3px;
+-webkit-border-radius: 3px;
+border-radius: 3px;
+
+}
+form.widget-search input.widget-search-input:focus{
+border-color: #000000;
+}
+
+
+/*=Search results
+--------------------------------------------------------------------------------------------------- */
+
+body.search-results div.product{
+margin-left:1%;
+margin-right:1%;
+padding-left:10px;
+padding-right:10px;
+}
+
+/* =Image.php
+--------------------------------------------------------------------------------------------------- */
+
+div.image{	
+margin:0 auto 0 auto;
+padding:0;
+position:relative;
+}
+div.image img.attachment-thumbnail, /*div.image - image.php */
+div.image img.attachment-medium,
+div.image img.attachment-large,
+div.image img.attachment-full{
+border:0;
+margin:0 auto 0 auto; /*centre the image*/
+max-width:100%;
+padding:0;
+}
+div.caption{	
+margin:20px 0 0;
+padding:0;
+position:relative;
+}
+div.caption p{
+color:#4095B5;
+font-size:1em;
+font-weight:bold;
+margin:0;
+padding:0;
+text-align:center;
+}
+div.description{	
+margin:0 0 20px 0;
+padding:0;
+position:relative;
+}
+div.description p{
+color:#000000;
+font-size:1em;
+font-weight:normal;
+margin:0;
+padding:0;
+text-align:center;
+}
+
+
+/* =Attachment.php
+--------------------------------------------------------------------------------------------------- */
+
+div.file{
+border:1px solid #ffffff;
+margin:0 auto 0 auto;
+padding:0;
+position:relative;
+}
+div.file img.attachment-thumbnail{	
+margin:0 auto 0 auto;
+}
+
+
+/* =Login
+--------------------------------------------------------------------------------------------------- */
+
+body.login{
+background:#ffffff none;
+padding-top:30px;
+}
+div#login{
+background:#e8ffff none;
+border:1px solid #008000;
+margin:0 auto 0 auto;
+padding:0;
+position:relative;
+}
+div#login h1 a{
+background:#ebebeb none;
+border:1px solid #0000ff;
+margin:0;
+padding:0;
+width:320px;
+}
+p.message{
+margin:0;
+padding:0;
+text-align:center;
+width:320px;
+}
+p#backtoblog{
+background:transparent none;
+border:1px solid red;
+margin:0 auto 0 auto;
+}
+input#user_login{
+border:1px solid #c0c0c0;
+}
+input#user_pass{
+border:1px solid #c0c0c0;
+}
+p#nav{
+clear:both;
+margin-bottom:20px;
+}
+p.forgetmenot{
+margin-left:10px;
+}
+p.submit{
+margin-right:10px;
+}
+
+
+/* =Menus / navigation
+---------------------------------------------------------------------------------------------------*/
+/*
+With thanks to the WordPress Twenty Eleven theme 
+NOTE: The order that some of these styles are in is important! Mess around at your peril!
+*/
+
+.top-navigation,
+.bottom-navigation{	/*   The top and bottom menu divs that contain the horizontal links  */
+background:#949494;
+clear:both;
+display:block;
+float:left;
+margin:0;
+position:relative;
+width:100%;
+}
+div.top-navigation,
+div.bottom-navigation{	/****   Border of navigation container ****/
+border-top:1px solid #c0c0c0;
+border-bottom:1px solid #c0c0c0;
+clear:both;
+position:relative;
+}
+div.top-navigation,
+div.bottom-navigation{
+padding:3px 0 3px 0;
+}
+.top-navigation ul,
+.bottom-navigation ul{
+list-style:none;
+margin:0;
+padding:0;
+position:relative;
+}
+.top-navigation li,
+.bottom-navigation li{
+float:left;
+}
+/*
+Below are the main horizontal links before they're hovered over or clicked on.
+*/
+.top-navigation a,
+.bottom-navigation a{
+color:#ffffff;
+display:block;
+font-size:16px;
+font-size:1rem; 
+font-weight:bold;
+padding:0 10px;
+text-decoration:none;
+}
+/*  Below - the main horizontal links (across the page) when they're hovered over or selected via the keyboard. */
+.top-navigation ul li:hover > ul,
+.bottom-navigation ul li:hover > ul{
+display:block;
+}
+/*
+Below - position the dropdown menus below the horizontal links
+To ensure that dropdown menus line up with the main horizontal links the offset from the left is the same as the left padding in  .top-navigation a, .bottom-navigation a
+*/
+.top-navigation ul ul,
+.bottom-navigation ul ul{
+display:none;
+float:left;
+margin:0;
+position:absolute;
+left:10px;
+z-index:310;
+}
+.top-navigation ul ul ul,
+.bottom-navigation ul ul ul{
+left:100%;
+top:0;
+}
+/*
+Below - the dropdown menus after they've dropped down but before they're hovered over.
+The borders on hover are inherited i.e. they're the borders that are set here.
+*/
+ul.top-navigation li li a:link,
+ul.top-navigation li li a:visited,
+ul.bottom-navigation li li a:link,
+ul.bottom-navigation li li a:visited,  
+.top-navigation ul ul a,
+.bottom-navigation ul ul a{
+background-color:#d7f7de;
+border:1px solid #000000;
+color:#000000;
+font-size:16px;
+font-size:1rem; /*   change the font size of the dropdowns   */
+font-weight:normal;
+height:auto;
+padding:4px;
+width:128px;
+word-wrap: break-word;
+z-index:320;
+}
+ul.top-navigation  ul.sub-menu li.menu-item a,
+ul.bottom-navigation ul.sub-menu li.menu-item a{ /*avoid double borders*/
+margin-left:-1px;
+margin-top:-1px;
+}
+
+/*
+Below - the dropdown menus when they're hovered over. 
+NOTE: border-bottom and border-top will mess up the layout, and border-left and border-right will cause the menus to shift sideways when hovered over.
+You can add in a hover color for the dropdown menu text
+*/
+.top-navigation li:hover > a,
+.top-navigation ul ul:hover > a,
+.top-navigation a:focus,
+ul.top-navigation li li a:hover,
+.bottom-navigation li:hover > a,
+.bottom-navigation ul ul:hover > a,
+.bottom-navigation a:focus,
+ul.bottom-navigation li li a:hover{	
+background-color:transparent; 
+border-color: #000000;
+color:#18742d; 
+}
+ul.top-navigation li li a:active,	/* The dropdown menus when they're active. */
+ul.bottom-navigation li li a:active{
+background-color:#99eaab; 
+border-color: #000000;
+color:#000000;
+}
+/* Below - current item - horizontal links and dropdown menus. You could have a different background color.*/
+.top-navigation .current-cat > a,
+.top-navigation .current-menu-item > a,
+.top-navigation .current_page_item > a,
+.bottom-navigation .current-cat > a,
+.bottom-navigation .current-menu-item > a,
+.bottom-navigation .current_page_item > a{
+text-decoration:none;
+}
+.nav_desc {
+display:block;
+font-family:inherit;
+font-weight:bold;
+padding:0 10px 0 10px;
+}
+
+
+/*  =Post formats
+ -------------------------------------------------------------------------------------------------- */
+ 
+div.chat{
+border:1px dashed #d3d3d3;
+position:relative;
+}
+div.chat p{
+margin:0 0 0 10px;
+}
+
+/* =404
+--------------------------------------------------------------------------------------------------- */
+div.error-404-search{
+margin-left:35%;
+width:50%;
+}
+
+/*
+=Smiley
+----------------------------------------------------------------------------------------------------*/
+img.wp-smiley{
+display:inline;
+}
+
+
+/*
+=Woocommerce  There are more WooCommerce styles in custom.css in both the parent and child theme
+----------------------------------------------------------------------------------------------------*/
+div.woocommerce-content{
+margin-left:1%;
+overflow:auto;
+position:relative;
+width:98%;
+}
+div.woocommerce-content h1.page-title{
+text-align:left;
+}
+div.woocommerce-content p.woocommerce-result-count{
+clear:both;
+}
+div.woocommerce-content form.woocommerce-ordering{
+clear:both;
+float:left;
+}
+div.inner-wrapper div.woocommerce-content-with-sidebars{
+margin-left:0;
+}
+div.woocommerce-inner-content{
+margin-left:1%;
+margin-right:1%;
+position:relative;
+}
+body.woocommerce-cart div.header-container{
+min-height:0;
+height:3.0em;
+}
+div.woocommerce-inner-content-with-sidebars div.instock,
+div.woocommerce-inner-content-without-sidebars div.instock{
+margin-top:3em;
+}
+body.woocommerce-cart div.instock{
+border:0 solid white;
+margin-top:0;
+}
+body.page-template-page-woocommerce-without-sidebars-php div.inner-wrapper, /* content area for all WC Pages including T & C and Change Password */
+body.page-template-page-woocommerce-with-sidebars-php div.inner-wrapper,
+body.woocommerce-account div.content,
+body.woocommerce-account div.inner-wrapper,
+body.woocommerce div.inner-wrapper,
+body.woocommerce div.content,
+body.woocommerce-checkout div.content,
+body.woocommerce-checkout div.inner-wrapper,
+body.woocommerce-cart div.content,
+body.woocommerce-cart div.inner-wrapper,
+div.instock, /*On the checkout Page and the Cart Page */
+div.place_order,  /* This and ul.methods are on the final checkout Page */
+ul.methods{
+background-color:white;
+}
+div.instock{
+border:0;
+}
+body.woocommerce h1.product_title{
+text-align:left;
+}
+body.woocommerce div.related{
+margin-top:60px;
+}
+body.woocommerce div.related h2{
+text-align:left;
+}
+div.woocommerce-tabs h2{
+font-size:1.6em;
+text-align:left;
+}
+a.added_to_cart{  /* Background tick too close to link */
+padding-left:30px;
+}
+div.cross-sells h2,
+div.cart_totals h2{
+margin-bottom:20px;
+}
+div.upsells h2{
+color:#828282;
+}
+div.upsells ul.products h3,
+div.related ul.products h3{
+text-align:left;
+}
+input#place_order{
+z-index:1500; /*kind of important that the 'Place Order' button works.*/
+}
+
+/*
+=Other
+----------------------------------------------------------------------------------------------------*/
+div.click-notice p{ /* Alert re. draft home pages using single-cst_home_page.php DEPRECATED*/
+color:red;
+display:none;
+font-size:2.6em;
+font-weight:bold;
+margin-top:50px;
+}
+p.draft-alert{ /* Alert re. draft home pages using single-cst_home_page.php DEPRECATED*/
+display:none;
+font-size:2.1em;
+color:black;
+font-weight:normal;
+}
+.gallery-caption {
+text-align:left;
+}
+table.noborder,
+table.noborder tr,
+table.noborder td,
+table.noborder th{
+border:none;
+}

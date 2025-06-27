@@ -1,0 +1,872 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width">
+    <meta name="description" content="Pixel Warfare is a free to play online multiplayer 3D shoot 'em up game with old school graphics similar to Minecraft. Just download Unity Player, install it, and you're good to go.">
+    <meta name="keywords" content="pixel warfare, pixel warfare v2, pixel warfare 2, pixelwarfare, pixel warfare game">
+    <meta property="og:image" content="/WebPage/Pixel-warfare.jpg">
+    <meta name="generator" content="WordPress 5.4.8">
+    <title>Pixel Warfare</title>
+
+    <!-- Canonical & Feed Links -->
+    <link rel="canonical" href="/index.html">
+    <link rel="alternate" type="application/rss+xml" title="Pixel Warfare » Feed" href="https://pixelwarfareio.github.io/feed/">
+    <link rel="alternate" type="application/rss+xml" title="Pixel Warfare » Comments Feed" href="https://pixelwarfareio.github.io/comments/feed/">
+    <link rel="shortlink" href="/index.html">
+    <link rel="EditURI" type="application/rsd+xml" title="RSD" href="/WebPage/xmlrpc.php?rsd">
+    <link rel="wlwmanifest" type="application/wlwmanifest+xml" href="/WebPage/wlwmanifest.xml">
+    <!-- <link rel="https://api.w.org/" href="https://pixelwarfare.org/wp-json/"> -->
+    <link rel="alternate" type="application/json+oembed" href="/WebPage/oembed/1.0/embed?url=https://pixelwarfareio.github.io/">
+    <link rel="alternate" type="text/xml+oembed" href="/WebPage/oembed/1.0/embed?url=https://pixelwarfareio.github.io/&amp;format=xml">
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="/WebPage/PixelWarfare/style.css">
+    <link rel="stylesheet" id="wp-block-library-css" href="/WebPage/block-library/style.min.css">
+    <link rel="stylesheet" id="wpautoterms_css-css" href="/WebPage/auto-terms-of-service-and-privacy-policy/wpautoterms.css">
+    <link rel="stylesheet" id="contact-form-7-css" href="/WebPage/contact-form-7/styles.css">
+    <link rel="stylesheet" id="hupso_css-css" href="/WebPage/hupso-share-buttons-for-twitter-facebook-google/style.css">
+    <link rel="stylesheet" id="yasrcss-css" href="/WebPage/yet-another-stars-rating/yasr.css">
+    <link rel="stylesheet" id="yasrcsslightscheme-css" href="/WebPage/yet-another-stars-rating/yasr-table-light.css">
+    <link rel="stylesheet" id="dashicons-css" href="/WebPage/dashicons.min.css">
+    <link rel="stylesheet" id="olimpusMulti-css" href="/WebPage/PixelWarfare/style-print.css" media="print">
+
+    <!-- jQuery -->
+    <script src="/WebPage/jquery/jquery.js"></script>
+    <script src="/WebPage/jquery/jquery-migrate.min.js"></script>
+
+    <!-- Emoji Script -->
+    <script defer src="/WebPage/wp-emoji-release.min.js"></script>
+    <script>
+      window._wpemojiSettings = {
+        baseUrl: "https://s.w.org/images/core/emoji/12.0.0-1/72x72/",
+        ext: ".png",
+        svgUrl: "https://s.w.org/images/core/emoji/12.0.0-1/svg/",
+        svgExt: ".svg",
+        source: {
+          concatemoji: "/WebPage/wp-emoji-release.min.js"
+        }
+      };
+    </script>
+
+    <!-- CSS from previous raw block (condensed version should be extracted to a separate CSS file ideally) -->
+    <style>
+      body { background-color: #000000; }
+      .custom-header-link img.header {
+        width: 100%;
+        max-width: 100%;
+      }
+      /* Add other styles from the giant style block here (not repeated due to size) */
+    </style>
+
+    <!-- Emoji Image Styling -->
+    <style>
+      img.wp-smiley, img.emoji {
+        display: inline !important;
+        border: none !important;
+        box-shadow: none !important;
+        height: 1em !important;
+        width: 1em !important;
+        margin: 0 .07em !important;
+        vertical-align: -0.1em !important;
+        background: none !important;
+        padding: 0 !important;
+      }
+    </style>
+
+    <!-- StatCounter -->
+    <script type="text/javascript">
+      var sc_project=11006312; 
+      var sc_invisible=1; 
+      var sc_security="12b884be"; 
+      var scJsHost = (("https:" == document.location.protocol) ?
+      "https://secure." : "http://www.");
+      document.write("<sc"+"ript type='text/javascript' src='" +
+      scJsHost+
+      "statcounter.com/counter/counter.js'></"+"script>");
+    </script>
+
+    <style>
+      #game-frame {
+        width: 951;
+        height: 600;
+        border: none;
+      }
+      #fullscreen-btn {
+        position: absolute;
+        top: 20px;
+        right: 4px;
+        z-index: 9999;
+        background-color: rgba(0, 0, 0, 0.7);
+        color: white;
+        border: none;
+        padding: 7px;
+        font-size: 12px;
+        cursor: pointer;
+      }
+
+      /* Links and comments */
+      a:link,
+      a:visited,
+      div.entry a.more-link:link,
+      div.entry a.more-link:visited,
+      p.post-info-top span.number-of-comments,
+      p.post-info-top span.meta-info,
+      a.comments-closed:link,
+      a.comments-closed:visited {
+          color: #ff0000;
+      }
+
+      a:hover,
+      div.entry a.more-link:hover,
+      a.comments-closed:hover {
+          color: #00ff00;
+      }
+
+      /* Wrapper and layout */
+      div.wrapper,
+      div#wrapper {
+          width: 1180px;
+          margin-left: auto;
+          margin-right: auto;
+          margin-top: 0;
+          border-width: 5px;
+          border-color: #000000;
+      }
+
+      /* Primary taglines */
+      h1.primary-tagline-h1,
+      a.primary-tagline-link {
+          color: #ffffff;
+      }
+
+      /* Secondary taglines */
+      h2.secondary-tagline-h2,
+      a.secondary-tagline-link {
+          color: #ffffff;
+      }
+
+      /* Top navigation */
+      ul.top-navigation,
+      div.top-navigation {
+          background-color: #4b4848;
+      }
+
+      div.top-navigation {
+          border-top-color: #4b4848;
+          border-bottom-color: #4b4848;
+      }
+
+      div.top-navigation a,
+      small.nav_desc {
+          color: #ffffff;
+      }
+
+      div.top-navigation li:hover > a,
+      div.top-navigation a:focus {
+          color: #ff0000;
+      }
+
+      /* Submenu links */
+      ul.top-navigation li li a:link,
+      ul.top-navigation li li a:visited {
+          color: #3088b8;
+          background-color: #ffffff;
+          border-color: #a4d1ff;
+      }
+
+      ul.top-navigation li li a:hover {
+          color: #153c51;
+          background-color: #e8f3f9;
+          border-color: #a4d1ff;
+      }
+
+      ul.top-navigation li li a:active {
+          color: #3088b8;
+          background-color: #ffffff;
+          border-color: #a4d1ff;
+      }
+
+      /* Inner wrapper and content */
+      div.inner-wrapper,
+      div#inner-wrapper {
+          background-color: #000000;
+      }
+
+      div.header-container {
+          min-height: 0;
+      }
+
+      div#content,
+      div.content {
+          width: 973px;
+      }
+
+      /* Sidebar styles */
+      div.sidebar {
+          padding-top: 245px;
+      }
+
+      div.left-sidebar {
+          width: 207px;
+          background-color: #000000;
+      }
+
+      div.inner-wrapper div.long-left-sidebar-background,
+      div#inner-wrapper div.long-left-sidebar-background {
+          background-color: #000000;
+          width: 207px;
+          left: 0;
+      }
+
+      div.left-sidebar-item {
+          background-color: #000000;
+          border-color: #000000;
+          color: #ffffff;
+      }
+
+      div.left-sidebar table,
+      div.left-sidebar th,
+      div.left-sidebar tr,
+      div.left-sidebar td {
+          border-color: #ffffff;
+      }
+
+      div.left-sidebar-item ul li {
+          border-bottom-color: #000000;
+      }
+
+      div.left-sidebar-item h2.widgettitle,
+      div.left-sidebar-item h2.left-sidebar-item {
+          background-color: #000000;
+          color: #0b79b6;
+      }
+
+      div.left-sidebar-item a:link,
+      div.left-sidebar-item a:visited,
+      div.left-sidebar-item a.url:link,
+      div.left-sidebar-item a.url:visited {
+          color: #3fb7f8;
+      }
+
+      div.left-sidebar-item a:hover,
+      div.left-sidebar-item a.url:hover {
+          color: #065f8e;
+      }
+
+      /* Right sidebar styles */
+      div.right-sidebar {
+          width: 207px;
+          background-color: #000000;
+      }
+
+      div.inner-wrapper div.long-right-sidebar-background,
+      div#inner-wrapper div.long-right-sidebar-background {
+          background-color: #000000;
+          width: 207px;
+          right: 0;
+      }
+
+      div.right-sidebar-item {
+          background-color: #000000;
+          border-color: #000000;
+          color: #ffffff;
+      }
+
+      div.right-sidebar table,
+      div.right-sidebar th,
+      div.right-sidebar tr,
+      div.right-sidebar td {
+          border-color: #ffffff;
+      }
+
+      div.right-sidebar-item ul li {
+          border-bottom-color: #000000;
+      }
+
+      div.right-sidebar-item h2.widgettitle,
+      div.right-sidebar-item h2.right-sidebar-item {
+          background-color: #000000;
+          color: #0b79b6;
+      }
+
+      div.right-sidebar-item a:link,
+      div.right-sidebar-item a:visited,
+      div.right-sidebar-item a.url:link,
+      div.right-sidebar-item a.url:visited {
+          color: #3fb7f8;
+      }
+
+      div.right-sidebar-item a:hover,
+      div.right-sidebar-item a.url:hover {
+          color: #065f8e;
+      }
+
+      /* Various text styles */
+      h1.multiple-post-heading,
+      span.multiple-nav-left a,
+      span.multiple-nav-right a,
+      p.single-left,
+      p.single-right,
+      p.single-left a,
+      p.single-right a,
+      p.password-protected-comments,
+      h3.comment-reply-title,
+      h3.comment-reply-title a:link,
+      h3.comments,
+      a#cancel-comment-reply-link,
+      p.allowed-tags,
+      p.logged-in-as,
+      p.must-be-logged-in,
+      p.must-be-logged-in a,
+      a.logged-in-as,
+      a.log-out {
+          color: #3f3f3f;
+      }
+
+      /* Post titles and permalink */
+      h1.post-title,
+      h1.page-title,
+      h2.post-title,
+      a.permalink:link,
+      a.permalink:visited {
+          color: #ff0000;
+      }
+
+      a.permalink:hover {
+          color: #3f3f3f;
+      }
+
+      /* Post and page backgrounds */
+      div.post,
+      div.page,
+      div.attachment,
+      p.post-info-top,
+      div.inner-home-page-simple-textarea-content {
+          border-color: #000000;
+          background-color: #000000;
+          color: #ffffff;
+      }
+
+      div.entry table,
+      div.entry th,
+      div.entry tr,
+      div.entry td {
+          border-color: #ffffff;
+      }
+
+      .wp-caption-text,
+      span.comment-link {
+          color: #ffffff;
+      }
+
+      div.post,
+      div.page,
+      div.attachment {
+          margin-bottom: 30px;
+      }
+
+      div.sticky {
+          border-color: #000000;
+      }
+
+      /* Bottom navigation */
+      ul.bottom-navigation,
+      div.bottom-navigation {
+          background-color: #4b4848;
+      }
+
+      div.bottom-navigation {
+          border-top-color: #4b4848;
+          border-bottom-color: #4b4848;
+      }
+
+      div.bottom-navigation a,
+      small.nav_desc {
+          color: #ffffff;
+      }
+
+      div.bottom-navigation li:hover > a,
+      div.bottom-navigation a:focus {
+          color: #ff0000;
+      }
+
+      ul.bottom-navigation li li a:link,
+      ul.bottom-navigation li li a:visited {
+          color: #3088b8;
+          background-color: #c6f4fd;
+          border-color: #ffffff;
+      }
+
+      ul.bottom-navigation li li a:hover {
+          color: #3088b8;
+          background-color: #153c51;
+          border-color: #ffffff;
+      }
+
+      ul.bottom-navigation li li a:active {
+          color: #3088b8;
+          background-color: #ffffff;
+          border-color: #ffffff;
+      }
+
+      /* Footer */
+      div.footer {
+          background-color: #000000;
+      }
+
+      div.inner-footer-widget-container {
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+
+      div.inner-footer table,
+      div.inner-footer th,
+      div.inner-footer tr,
+      div.inner-footer td {
+          border-color: #065f8e;
+      }
+
+      div.outer-footer-item {
+          width: 25%;
+      }
+
+      div.inner-footer-item {
+          background-color: #ffffff;
+          border-color: #ffffff;
+          color: #065f8e;
+          min-height: 270px;
+      }
+
+      div.inner-footer-item p.footer-latest-comments-excerpt {
+          color: #065f8e;
+      }
+
+      div.inner-footer-item ul li {
+          border-bottom-color: #ffffff;
+      }
+
+      div.inner-footer-item h2.footer-item,
+      div.inner-footer-item h2.widgettitle {
+          background-color: #b6e2fb;
+          color: #ffffff;
+      }
+
+      div.inner-footer-item a:link,
+      div.inner-footer-item a:visited {
+          color: #3fb7f8;
+      }
+
+      div.inner-footer-item a:hover {
+          color: #065f8e;
+      }
+
+      div.footer-spacer {
+          height: 20px;
+      }
+
+      /* Powered by / theme credits */
+      a.powered-by:link,
+      a.theme-created-by:link,
+      a.rss-all-posts:link,
+      a.rss-all-comments:link,
+      a.rss-comments-single-post:link,
+      a.designed-by:link,
+      a.powered-by:visited,
+      a.theme-created-by:visited,
+      a.rss-all-posts:visited,
+      a.rss-all-comments:visited,
+      a.rss-comments-single-post:visited,
+      a.designed-by:visited {
+          color: #256889;
+      }
+
+      span.image-rss {
+          border-color: #256889;
+      }
+
+      p.copyright,
+      span.theme-created-by,
+      a.powered-by:hover,
+      a.theme-created-by:hover,
+      a.rss-all-posts:hover,
+      a.rss-all-comments:hover,
+      a.rss-comments-single-post:hover,
+      a.designed-by:hover {
+          color: #ffffff;
+      }
+
+      /* Remove border-radius and shadows from many elements */
+      div.wrapper, div#wrapper, div.top-image-container, img.header,
+        img, div.entry img, div.inner-home-page img, div.inner-footer-item img, div.inner-home-page-widget img, div.sidebar img, img.avatar,
+        div.post, div.page, div.attachment, div.comment-body,
+        div.left-sidebar-item, h2.left-sidebar-item,  
+        div.right-sidebar-item, h2.right-sidebar-item, 
+        div.inner-footer-item, h2.footer-item,
+        div.inner-home-page-simple-textarea-content,
+        div.inner-home-page-widget, 
+        div.left-sidebar-item h2.widgettitle:first-child, 
+        div.right-sidebar-item h2.widgettitle:first-child, 
+        div.inner-footer-item h2.widgettitle:first-child, 
+        div.inner-home-page-widget h2.widgettitle:first-child,
+        div.footer, img.avatar, a.page-numbers:link, a.page-numbers:visited, a.page-numbers:hover
+      span.current {
+          border-radius: 0;
+          box-shadow: none;
+          -moz-border-radius: 0;
+          -moz-box-shadow: none;
+          -webkit-border-radius: 0;
+          -webkit-box-shadow: none;
+      }
+
+      /* Home page only styles */
+      body.home div.header-container {
+          min-height: 0;
+      }
+
+      div.outer-home-page {
+          margin-top: 0;
+      }
+
+      div.multiple-post-last-post,
+      div.multiple-excerpt-last-excerpt,
+      div.page {
+          margin-bottom: 0;
+      }
+
+      div.outer-home-page-simple {
+          padding-bottom: 0;
+      }
+
+      div.inner-home-page-simple,
+      div.front-page-content-no-sidebars,
+      div.post,
+      div.page,
+      div.single-post-navigation,
+      div.multiple-post-navigation {
+          margin-left: 0;
+          margin-right: 0;
+      }
+
+      div.inner-wrapper,
+      div.outer-home-page-simple {
+          background-color: #000000;
+      }
+
+      div.footer {
+          background-color: #000000;
+      }
+
+      div.inner-home-page-simple-textarea-content {
+          border-width: 0;
+      }
+
+      div.home-page-bottom-widget-spacer {
+          height: 20px;
+      }
+
+      div.outer-home-page-bottom-widget {
+          width: 33.33%;
+      }
+
+      div.home-page-widgets-container {
+          background-color: #5ec1f7;
+          padding-left: 10px;
+          padding-right: 10px;
+      }
+
+      div.inner-home-page-bottom-widget {
+          background-color: #ffffff;
+          border-color: #b6e2fb;
+          color: #065f8e;
+          min-height: 200px;
+      }
+
+      div.inner-home-page-bottom-widget h2.widgettitle {
+          background-color: #b6e2fb;
+          color: #ffffff;
+      }
+
+      div.inner-home-page-bottom-widget ul li {
+          border-bottom-color: #ffffff;
+      }
+
+      div.inner-home-page-bottom-widget table,
+      div.inner-home-page-bottom-widget th,
+      div.inner-home-page-bottom-widget tr,
+      div.inner-home-page-bottom-widget td {
+          border-color: #065f8e;
+      }
+
+      div.inner-home-page-bottom-widget a:link,
+      div.inner-home-page-bottom-widget a:visited {
+          color: #3fb7f8;
+      }
+
+      div.inner-home-page-bottom-widget a:hover {
+          color: #36b1f3;
+      }
+
+      div.inner-home-page-simple-01-textarea-01-content {
+          background-color: #ffffff;
+          min-height: 500px;
+          border-color: #ffffff;
+      }
+    </style>
+
+  </head>
+
+  <body class="custom-background">
+
+    <!-- Background Image -->
+    <style type="text/css" id="custom-background-css">
+      body.custom-background { 
+        background-image: url("/WebPage/Pixel-warfare-5.jpg"); 
+        background-position: center top; 
+        background-size: auto; 
+        background-repeat: repeat; 
+        background-attachment: scroll; 
+      }
+    </style>
+    <!-- Main Content -->
+    <!-- Add HTML above your website on all of your pages -->
+
+    <div class="wrapper">
+      <div class="top-image-container">
+        <a class="custom-header-link" href="/index.html">
+          <img class="header" src="/WebPage/Pixel-warfare.jpg" alt="header image">
+        </a>
+      </div>
+      <div class="top-navigation">
+        <ul id="menu-menu" class="top-navigation">
+          <li id="menu-item-12" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-home current-menu-item page_item page-item-10 current_page_item">
+            <a href="/index.html">Pixel Warfare</a>
+          </li>
+          <li id="menu-item-13" class="menu-item menu-item-type-post_type menu-item-object-page">
+            <a href="/contact.html">Contact</a>
+          </li>
+          <li id="menu-item-14" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-privacy-policy">
+            <a href="/privacy-policy.html">Privacy Policy</a>
+          </li>
+        </ul>
+      </div>
+      <div class="inner-wrapper">
+        <div class="content content-page">
+          <div class="header-container header-container-page"></div>
+          <div class="post-10 page type-page status-publish hentry">
+            <h1 class="page-title">Pixel Warfare</h1>
+            <div class="entry entry-page">
+
+              <style type="text/css">
+                .fb-comments,
+                .fb-comments span,
+                .fb-comments span iframe[style] {
+                  min-width: 100% !important;
+                  width: 100% !important
+                }
+              </style>
+              <div id="fb-root"></div>
+              <p>
+                <center>
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <!-- pixelwarfare.org -->
+                  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8033074846660163" data-ad-slot="6606245939" data-ad-format="auto"></ins>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                </center>
+                <br/>
+                <button id="fullscreen-btn">🔳 Fullscreen</button>
+                <div style="text-align: center;">
+                  <iframe
+                    id="game-frame" 
+                    src="https://www.crazygames.com/embed/pixel-warfare" 
+                    width="951"
+                    height="600"
+                    style="border: none;" 
+                    allow="fullscreen"
+                    loading="lazy"
+                  ></iframe>
+                </div>
+                <center>
+                  <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+                  <!-- pixelwarfare.org -->
+                  <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8033074846660163" data-ad-slot="6606245939" data-ad-format="auto"></ins>
+                  <script>
+                    (adsbygoogle = window.adsbygoogle || []).push({});
+                  </script>
+                </center>
+                <br />
+                Pixel Warfare is a free to play online multi player 3D shoot em up game with old school graphics similar to Minecraft.
+                There are many websites to play the game on, just download Unity Player, install it; and you are good to go. There are eight
+                weapons in the game, two of which are usually locked when you spawn in to the battlefield; I will explain why further on.
+                You start with a crowbar, but have access to five other weapons, pistol, shotgun, machinegun, sniper rifle, and paco gun.
+                The other two weapons are the grenade launcher and rocket launcher, although these two weapons are often locked when you
+                enter a game, to ensure a more balanced, fluid playing experience. That said, you can always host a game and enable them in
+                your menu. Pixel Warfare has six maps to play on, ranging from smaller, tighter maps; to more open spaces. There are two
+                modes of play available on the server when you join, Deathmatch and Team Deathmatch. You can also choose to host a game, and
+                can specify the amount of players in your room, which map you want to play, whether some or all the weapons are available; and
+                how long you want each game round to last. Deathmatch mode is a straight forward kill or be killed situation. Try to kill your
+                opponents more times than they kill you to win the round. In Team Deathmatch, you join one of two sides, ‘the good guys’ or
+                ‘the bad guys’. It’s a simple red versus blue setup, when you spawn on to the map, your team mates are highlighted in green as
+                you move around, which helps to ensure you don’t shoot anyone on your side. Kill as many of the opposite team as you can to
+                win the round. Overall, Pixel Warfare is a really fun, fast paced game to play. The weapons are satisfying to use and anyone
+                can jump into this game and play it with little or no experience.
+              </p>
+              <div style="padding-bottom:0px; padding-top:0px;" class="hupso-share-buttons">
+                <!-- Hupso Share Buttons - https://www.hupso.com/share/ -->
+                <a class="hupso_counters" href="https://www.hupso.com/share/"><img src="https://static.hupso.com/share/buttons/dot.png" style="border:0px; padding-top:2px; float:left;" alt="Share Button" /></a>
+                <script type="text/javascript">
+                  var hupso_services_c = new Array("twitter", "facebook_like", "facebook_send", "google");
+                  var hupso_counters_lang = "en_US";
+                  var hupso_image_folder_url = "";
+                  var hupso_url_c = "";
+                  var hupso_title_c = "Pixel%20Warfare";
+                </script>
+                <script type="text/javascript" src="https://static.hupso.com/share/js/counters.js"></script>
+                <!-- Hupso Share Buttons -->
+              </div>
+              <script type="application/ld+json">
+                {
+                  "@context": "https://schema.org/",
+                  "@type": "Product",
+                  "name": "Pixel Warfare",
+                  "description": "Pixel Warfare",
+                  "image": {
+                    "@type": "ImageObject",
+                    "url": "",
+                    "width": 0,
+                    "height": 0
+                  },
+                  "aggregateRating": {
+                    "@type": "AggregateRating",
+                    "ratingValue": 4.8,
+                    "ratingCount": 346,
+                    "bestRating": 5,
+                    "worstRating": 1
+                  },
+                  "brand": "",
+                  "sku": "",
+                  "": ""
+                }
+              </script>
+              <div class="heateorFfcClear"></div>
+              <div style="width:100%;text-align:left;background-color:#f5f6f7;" class="heateor_ffc_facebook_comments">
+                <h4 class="heateor_ffc_facebook_comments_title" style="padding:10px;font-family:Arial,Helvetica Neue,Helvetica,sans-serif;color:#000000;">Facebook Comments</h4>
+                <script type="text/javascript">
+                  !function(e, n, t) {
+                    var o, c = e.getElementsByTagName(n)[0];
+                    e.getElementById(t) || (o = e.createElement(n), o.id = t, o.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v6.0", c.parentNode.insertBefore(o, c))
+                  }(document, "script", "facebook-jssdk");
+                </script>
+                <div class="fb-comments" data-href="https://pixelwarfare.org/" data-colorscheme="light" data-numposts="" data-width="100%" data-order-by="social"></div>
+              </div>
+              <div class="heateorFfcClear"></div>
+            </div> 
+          </div>
+        </div>
+        <div class="long-right-sidebar-background">&nbsp;</div>
+        <div class="sidebar right-sidebar">
+          <!-- Yasr Visitor Votes Shortcode -->
+          <div class="sidebar-item right-sidebar-item right-sidebar-widget right_sidebar_widget_yasr_visitor_votes_widget">
+            <div id="yasr_visitor_votes_10" class="yasr-visitor-votes">
+
+              <div 
+                id="yasr-visitor-votes-rater-3d55e8692f06f"
+                class="yasr-rater-stars-visitor-votes yasr-star-rating"
+                data-rater-postid="10"
+                data-rating="4.8"
+                data-rater-starsize="24"
+                data-rater-readonly="false"
+                data-rater-nonce="d89064e3bd"
+                data-issingular="true"
+                style="width: 120px; height: 24px; background-size: 24px;"
+              >
+                <div class="yasr-star-value" style="background-size: 24px; width: 96%;"></div>
+              </div>
+
+              <span 
+                id="yasr-visitor-votes-container-after-stars-3d55e8692f06f"
+                class="yasr-visitor-votes-after-stars-class"
+              >
+                <span
+                  class="dashicons dashicons-chart-bar yasr-dashicons-visitor-stats"
+                  data-postid="10"
+                  id="yasr-total-average-dashicon-10"
+                  tabindex="0"
+                  role="img"
+                  aria-label="Rating Statistics"
+                ></span>
+
+                <span class="yasr-total-average-container" id="yasr-total-average-text-3d55e8692f06f">
+                  [Total:&nbsp;
+                  <span id="yasr-vv-votes-number-container-3d55e8692f06f">346</span>
+                  &nbsp;&nbsp;Average:&nbsp;
+                  <span id="yasr-vv-average-container-3d55e8692f06f">4.8</span>/5]
+                </span>
+              </span>
+            </div>
+          </div>
+          <!-- End Yasr Visitor Votes Shortcode -->
+          <!-- Google Ad -->
+          <div class="sidebar-item right-sidebar-item right-sidebar-widget right_sidebar_widget_text">
+            <div class="textwidget" style="text-align: center;">
+              <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+              <!-- pixelwarfare.org ad -->
+              <ins class="adsbygoogle"
+                  style="display:block"
+                  data-ad-client="ca-pub-8033074846660163"
+                  data-ad-slot="6606245939"
+                  data-ad-format="auto"></ins>
+              <script>
+                (adsbygoogle = window.adsbygoogle || []).push({});
+              </script>
+            </div>
+          </div>
+          <!-- End Google Ad -->
+        </div>
+      </div>
+      <div class="footer">
+        <div class="footer-spacer"> &nbsp;</div>
+        <div class="inner-footer">
+          <div class="inner-footer-widget-container">
+            <script type="text/javascript">
+              /* <![CDATA[ */
+              var wpcf7 = {
+                "apiSettings": {
+                  "root": "/WebPage/contact-form-7/v1",
+                  "namespace": "contact-form-7/v1"
+                }
+              };
+              /* ]]> */
+            </script>
+            <script type="text/javascript" src="/WebPage/contact-form-7/scripts.js"></script>
+            <script type="text/javascript" src="/WebPage/yet-another-stars-rating/rater-js.js"></script>
+            <script type="text/javascript" src="/WebPage/yet-another-stars-rating/yasr-front.js"></script>
+            <script type="text/javascript" src="/WebPage/yet-another-stars-rating/tippy.all.min.js"></script>
+            <script type="text/javascript" src="/WebPage/wp-embed.min.js"></script>
+          </div>
+          <div class="footer-text-content footer-text-content-below-footer-widgets"></div>
+            <p class="copyright">Preserved copy of PixelWarfare.org (2015–2022), PixelWarfareIO.io (2025)</p>
+          <div class="rss-feeds"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const button = document.getElementById('fullscreen-btn');
+      const iframe = document.getElementById('game-frame');
+
+      button.addEventListener('click', () => {
+        if (!document.fullscreenElement) {
+          iframe.requestFullscreen().catch(err => {
+            alert("Fullscreen not allowed: " + err.message);
+          });
+        } else {
+          document.exitFullscreen();
+        }
+      });
+    </script>
+
+  </body>
+</html>
